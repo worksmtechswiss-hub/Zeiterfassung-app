@@ -8,6 +8,10 @@ import TestimonialGrid from '../components/TestimonialGrid.astro';
 import FAQ from '../components/FAQ.astro';
 import CTASection from '../components/CTASection.astro';
 import ComparisonTable from '../components/ComparisonTable.astro';
+import HeroDashboard from '../components/illustrations/HeroDashboard.astro';
+import ProjectTracking from '../components/illustrations/ProjectTracking.astro';
+import TeamOverview from '../components/illustrations/TeamOverview.astro';
+import ReportExport from '../components/illustrations/ReportExport.astro';
 import { homeFeatureCards } from '../data/features';
 import { testimonials } from '../data/testimonials';
 import { homeFaq } from '../data/faq';
@@ -21,7 +25,7 @@ const schema = [
     operatingSystem: 'Web, iOS, Android',
     offers: {
       '@type': 'Offer',
-      price: '0',
+      price: '30',
       priceCurrency: 'CHF',
     },
     aggregateRating: {
@@ -44,8 +48,8 @@ const schema = [
 ---
 
 <BaseLayout
-  title="Zeiterfassung App Schweiz – Einfach, gesetzeskonform & kostenlos testen"
-  description="Die einfachste Zeiterfassungs-App für Freelancer und KMU in der Schweiz. ArG-konform, QR-Rechnung-kompatibel. Kostenlos testen."
+  title="Zeiterfassung App Schweiz – Einfach, gesetzeskonform & 30 Tage gratis"
+  description="Die einfachste Zeiterfassungs-App für Freelancer und KMU in der Schweiz. ArG-konform. 30 Tage kostenlos testen."
   schema={schema}
 >
   <!-- Hero -->
@@ -54,7 +58,9 @@ const schema = [
     subtitle="Stunden erfassen in Sekunden. ArG-konform. Für Freelancer und KMU. Daten bleiben in der Schweiz."
     cta2Text="Alle Features ansehen"
     cta2Href="/features/"
-  />
+  >
+    <HeroDashboard />
+  </Hero>
 
   <!-- Social Proof -->
   <section class="py-12 border-b border-border/50">
@@ -99,7 +105,9 @@ const schema = [
           'Direkt Rechnung aus Projektzeiten erstellen',
         ]}
         imagePosition="right"
-      />
+      >
+        <ProjectTracking />
+      </FeatureRow>
       <FeatureRow
         title="Überstunden & Absenzen automatisch verwalten"
         description="Überstunden werden automatisch berechnet. Ferien, Krankheitstage und Absenzen verwalten Ihre Mitarbeitenden selbst über die App."
@@ -110,7 +118,9 @@ const schema = [
           'Übersicht für Vorgesetzte',
         ]}
         imagePosition="left"
-      />
+      >
+        <TeamOverview />
+      </FeatureRow>
       <FeatureRow
         title="Rapporte & Exporte für Buchhaltung und Kunden"
         description="Exportieren Sie Stundenrapporte als PDF, CSV oder Excel. Direkt an Kunden senden oder in die Lohnbuchhaltung übernehmen."
@@ -121,7 +131,9 @@ const schema = [
           'Automatische Monats- und Jahresberichte',
         ]}
         imagePosition="right"
-      />
+      >
+        <ReportExport />
+      </FeatureRow>
     </div>
   </section>
 
@@ -142,7 +154,7 @@ const schema = [
             { feature: 'Automatische Überstunden', values: [true, false, 'Teilweise'] },
             { feature: 'Absenzverwaltung', values: [true, false, 'Teilweise'] },
             { feature: 'GPS-Zeiterfassung', values: [true, false, 'Teilweise'] },
-            { feature: 'Kostenloser Plan', values: [true, true, 'Teilweise'] },
+            { feature: '30 Tage gratis testen', values: [true, false, 'Teilweise'] },
             { feature: 'Schweizer Support', values: [true, false, false] },
           ]}
         />
@@ -158,7 +170,7 @@ const schema = [
 
   <!-- CTA -->
   <CTASection
-    title="Bereit? Kostenlos starten – in 2 Minuten"
-    subtitle="Keine Kreditkarte nötig. Dauerhaft kostenloser Plan verfügbar. Schweizer Qualität."
+    title="Bereit? 30 Tage kostenlos testen"
+    subtitle="Alle Features. Keine Kreditkarte. Keine Verpflichtung. Schweizer Qualität."
   />
 </BaseLayout>

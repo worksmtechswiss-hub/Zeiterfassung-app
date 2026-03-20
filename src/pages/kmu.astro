@@ -11,6 +11,10 @@ import ComparisonTable from '../components/ComparisonTable.astro';
 import { kmuTestimonials } from '../data/testimonials';
 import { kmuFaq } from '../data/faq';
 import { ctaUrl } from '../data/navigation';
+import HeroDashboard from '../components/illustrations/HeroDashboard.astro';
+import TeamOverview from '../components/illustrations/TeamOverview.astro';
+import ReportExport from '../components/illustrations/ReportExport.astro';
+import ComplianceShield from '../components/illustrations/ComplianceShield.astro';
 
 const schema = [
   {
@@ -39,7 +43,9 @@ const schema = [
     subtitle="Erfassen Sie Arbeitszeiten Ihrer Mitarbeitenden ArG-konform. Überstunden, Absenzen und Rapporte – alles in einer einfachen App. Für Schweizer Teams ab 2 Personen."
     cta2Text="Alle Features ansehen"
     cta2Href="/features/"
-  />
+  >
+    <HeroDashboard />
+  </Hero>
 
   <!-- Compliance Section -->
   <section class="py-16 lg:py-24">
@@ -114,7 +120,9 @@ const schema = [
           'Einfaches Onboarding neuer Teammitglieder',
         ]}
         imagePosition="right"
-      />
+      >
+        <TeamOverview />
+      </FeatureRow>
       <FeatureRow
         title="Überstunden & Absenzen automatisch verwalten"
         description="Überstunden werden automatisch berechnet. Ferien, Krankheitstage und Absenzen verwalten Ihre Mitarbeitenden selbst – Sie genehmigen nur noch."
@@ -125,7 +133,9 @@ const schema = [
           'Benachrichtigungen bei Anträgen und Genehmigungen',
         ]}
         imagePosition="left"
-      />
+      >
+        <ComplianceShield />
+      </FeatureRow>
       <FeatureRow
         title="Rapporte für Kunden, Buchhaltung und Behörden"
         description="Exportieren Sie Stundenrapporte als PDF, CSV oder Excel. ArG-konforme Zeitnachweise für Kontrollen sind jederzeit verfügbar."
@@ -136,7 +146,9 @@ const schema = [
           'Automatische Berichte per E-Mail an Vorgesetzte',
         ]}
         imagePosition="right"
-      />
+      >
+        <ReportExport />
+      </FeatureRow>
     </div>
   </section>
 

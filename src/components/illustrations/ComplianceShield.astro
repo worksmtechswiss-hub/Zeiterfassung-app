@@ -1,0 +1,79 @@
+---
+// Animated compliance/law shield illustration for Gesetz page
+---
+<div class="relative w-full max-w-sm mx-auto">
+  <svg viewBox="0 0 320 320" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto">
+    <!-- Background circle -->
+    <circle cx="160" cy="160" r="140" fill="#E8F2FF" opacity="0.5">
+      <animate attributeName="r" values="135;140;135" dur="4s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="160" cy="160" r="110" fill="#E8F2FF" opacity="0.3"/>
+
+    <!-- Shield -->
+    <g transform="translate(100, 60)">
+      <path d="M60 0L120 20V80C120 130 90 160 60 180C30 160 0 130 0 80V20L60 0Z" fill="#0066CC" opacity="0.1" stroke="#0066CC" stroke-width="2">
+        <animate attributeName="opacity" values="0.1;0.2;0.1" dur="3s" repeatCount="indefinite"/>
+      </path>
+      <path d="M60 10L110 27V78C110 122 84 148 60 166C36 148 10 122 10 78V27L60 10Z" fill="white" stroke="#0066CC" stroke-width="1.5"/>
+
+      <!-- Checkmark inside shield -->
+      <g transform="translate(32, 50)">
+        <circle cx="28" cy="28" r="24" fill="#0066CC" opacity="0.1"/>
+        <path d="M16 28L24 36L42 18" stroke="#0066CC" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+          <animate attributeName="stroke-dasharray" values="0 50;50 50" dur="1.5s" begin="0.5s" fill="freeze"/>
+          <animate attributeName="stroke-dashoffset" values="50;0" dur="1.5s" begin="0.5s" fill="freeze"/>
+        </path>
+      </g>
+
+      <!-- ArG text -->
+      <text x="60" y="125" text-anchor="middle" font-family="system-ui" font-weight="900" font-size="14" fill="#0066CC">ArG</text>
+      <text x="60" y="142" text-anchor="middle" font-family="system-ui" font-weight="400" font-size="9" fill="#4A4A68">Art. 46</text>
+    </g>
+
+    <!-- Floating badges -->
+    <g transform="translate(20, 80)">
+      <rect width="72" height="28" rx="14" fill="white" stroke="#E2E2EA" stroke-width="1" filter="url(#badgeShadow)">
+        <animate attributeName="y" values="0;-4;0" dur="3s" repeatCount="indefinite"/>
+      </rect>
+      <circle cx="14" cy="14" r="6" fill="#10B981"/>
+      <text x="26" y="18" font-family="system-ui" font-weight="600" font-size="8" fill="#1A1A2E">5 Jahre</text>
+    </g>
+
+    <g transform="translate(230, 100)">
+      <rect width="72" height="28" rx="14" fill="white" stroke="#E2E2EA" stroke-width="1" filter="url(#badgeShadow)">
+        <animate attributeName="y" values="0;-4;0" dur="3.5s" repeatCount="indefinite"/>
+      </rect>
+      <circle cx="14" cy="14" r="6" fill="#0066CC"/>
+      <text x="26" y="18" font-family="system-ui" font-weight="600" font-size="8" fill="#1A1A2E">DSG ✓</text>
+    </g>
+
+    <g transform="translate(40, 220)">
+      <rect width="88" height="28" rx="14" fill="white" stroke="#E2E2EA" stroke-width="1" filter="url(#badgeShadow)">
+        <animate attributeName="y" values="0;-4;0" dur="4s" repeatCount="indefinite"/>
+      </rect>
+      <circle cx="14" cy="14" r="6" fill="#F59E0B"/>
+      <text x="26" y="18" font-family="system-ui" font-weight="600" font-size="8" fill="#1A1A2E">GAV-konform</text>
+    </g>
+
+    <g transform="translate(210, 230)">
+      <rect width="88" height="28" rx="14" fill="white" stroke="#E2E2EA" stroke-width="1" filter="url(#badgeShadow)">
+        <animate attributeName="y" values="0;-4;0" dur="3.2s" repeatCount="indefinite"/>
+      </rect>
+      <circle cx="14" cy="14" r="6" fill="#8B5CF6"/>
+      <text x="26" y="18" font-family="system-ui" font-weight="600" font-size="8" fill="#1A1A2E">Schweiz 🇨🇭</text>
+    </g>
+
+    <!-- Swiss cross -->
+    <g transform="translate(140, 270)">
+      <rect width="40" height="40" rx="6" fill="#DC2626" opacity="0.1"/>
+      <rect x="16" y="8" width="8" height="24" rx="1" fill="#DC2626" opacity="0.3"/>
+      <rect x="8" y="16" width="24" height="8" rx="1" fill="#DC2626" opacity="0.3"/>
+    </g>
+
+    <defs>
+      <filter id="badgeShadow">
+        <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#1A1A2E" flood-opacity="0.06"/>
+      </filter>
+    </defs>
+  </svg>
+</div>

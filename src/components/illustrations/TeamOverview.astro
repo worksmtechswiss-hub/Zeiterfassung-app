@@ -1,0 +1,105 @@
+---
+// Animated team overview / absence management illustration
+---
+<div class="relative w-full">
+  <svg viewBox="0 0 480 360" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto drop-shadow-xl">
+    <rect x="0" y="0" width="480" height="360" rx="12" fill="white" stroke="#E2E2EA" stroke-width="1.5"/>
+
+    <!-- Header -->
+    <rect x="0" y="0" width="480" height="44" rx="12" fill="#F8F8FC"/>
+    <rect x="0" y="32" width="480" height="12" fill="#F8F8FC"/>
+    <text x="24" y="28" font-family="system-ui" font-weight="700" font-size="13" fill="#1A1A2E">Team-Übersicht</text>
+    <text x="380" y="28" font-family="system-ui" font-weight="400" font-size="11" fill="#8888A0">März 2026</text>
+
+    <!-- Column headers -->
+    <g transform="translate(0, 56)">
+      <rect x="0" y="0" width="480" height="28" fill="#F8F8FC"/>
+      <text x="24" y="18" font-family="system-ui" font-weight="600" font-size="10" fill="#8888A0">Mitarbeiter</text>
+      <text x="180" y="18" font-family="system-ui" font-weight="600" font-size="10" fill="#8888A0">Status</text>
+      <text x="260" y="18" font-family="system-ui" font-weight="600" font-size="10" fill="#8888A0">Heute</text>
+      <text x="330" y="18" font-family="system-ui" font-weight="600" font-size="10" fill="#8888A0">Woche</text>
+      <text x="400" y="18" font-family="system-ui" font-weight="600" font-size="10" fill="#8888A0">Überstd.</text>
+    </g>
+
+    <!-- Row 1 - Active, timer running -->
+    <g transform="translate(0, 92)">
+      <rect x="8" y="0" width="464" height="52" rx="8" fill="white"/>
+      <!-- Avatar -->
+      <circle cx="36" cy="26" r="16" fill="#0066CC"/>
+      <text x="36" y="31" text-anchor="middle" font-family="system-ui" font-weight="700" font-size="12" fill="white">MB</text>
+      <text x="60" y="20" font-family="system-ui" font-weight="700" font-size="12" fill="#1A1A2E">Marco Brunner</text>
+      <text x="60" y="35" font-family="system-ui" font-weight="400" font-size="10" fill="#8888A0">Schreiner</text>
+      <!-- Status -->
+      <g transform="translate(180, 14)">
+        <rect width="60" height="22" rx="11" fill="#E8F2FF"/>
+        <circle cx="12" cy="11" r="4" fill="#0066CC">
+          <animate attributeName="r" values="3;4;3" dur="1.5s" repeatCount="indefinite"/>
+        </circle>
+        <text x="22" y="15" font-family="system-ui" font-weight="600" font-size="9" fill="#0066CC">Aktiv</text>
+      </g>
+      <text x="260" y="30" font-family="system-ui" font-weight="700" font-size="13" fill="#1A1A2E">6:42h</text>
+      <text x="330" y="30" font-family="system-ui" font-weight="700" font-size="13" fill="#1A1A2E">32:15h</text>
+      <text x="400" y="30" font-family="system-ui" font-weight="700" font-size="13" fill="#F59E0B">+4:15h</text>
+    </g>
+
+    <!-- Row 2 - Active -->
+    <g transform="translate(0, 150)">
+      <rect x="8" y="0" width="464" height="52" rx="8" fill="#F8F8FC"/>
+      <circle cx="36" cy="26" r="16" fill="#10B981"/>
+      <text x="36" y="31" text-anchor="middle" font-family="system-ui" font-weight="700" font-size="12" fill="white">SK</text>
+      <text x="60" y="20" font-family="system-ui" font-weight="700" font-size="12" fill="#1A1A2E">Sandra Klein</text>
+      <text x="60" y="35" font-family="system-ui" font-weight="400" font-size="10" fill="#8888A0">Projektleitung</text>
+      <g transform="translate(180, 14)">
+        <rect width="60" height="22" rx="11" fill="#E8F2FF"/>
+        <circle cx="12" cy="11" r="4" fill="#0066CC"/>
+        <text x="22" y="15" font-family="system-ui" font-weight="600" font-size="9" fill="#0066CC">Aktiv</text>
+      </g>
+      <text x="260" y="30" font-family="system-ui" font-weight="700" font-size="13" fill="#1A1A2E">5:18h</text>
+      <text x="330" y="30" font-family="system-ui" font-weight="700" font-size="13" fill="#1A1A2E">28:30h</text>
+      <text x="400" y="30" font-family="system-ui" font-weight="700" font-size="13" fill="#10B981">+0:30h</text>
+    </g>
+
+    <!-- Row 3 - Absent -->
+    <g transform="translate(0, 208)">
+      <rect x="8" y="0" width="464" height="52" rx="8" fill="white"/>
+      <circle cx="36" cy="26" r="16" fill="#E2E2EA"/>
+      <text x="36" y="31" text-anchor="middle" font-family="system-ui" font-weight="700" font-size="12" fill="#8888A0">TR</text>
+      <text x="60" y="20" font-family="system-ui" font-weight="700" font-size="12" fill="#8888A0">Thomas Roth</text>
+      <text x="60" y="35" font-family="system-ui" font-weight="400" font-size="10" fill="#8888A0">IT-Support</text>
+      <g transform="translate(180, 14)">
+        <rect width="60" height="22" rx="11" fill="#FEF3C7"/>
+        <circle cx="12" cy="11" r="4" fill="#F59E0B"/>
+        <text x="22" y="15" font-family="system-ui" font-weight="600" font-size="9" fill="#92400E">Ferien</text>
+      </g>
+      <text x="260" y="30" font-family="system-ui" font-weight="400" font-size="13" fill="#8888A0">—</text>
+      <text x="330" y="30" font-family="system-ui" font-weight="400" font-size="13" fill="#8888A0">—</text>
+      <text x="400" y="30" font-family="system-ui" font-weight="700" font-size="13" fill="#1A1A2E">+2:00h</text>
+    </g>
+
+    <!-- Row 4 - Homeoffice -->
+    <g transform="translate(0, 266)">
+      <rect x="8" y="0" width="464" height="52" rx="8" fill="#F8F8FC"/>
+      <circle cx="36" cy="26" r="16" fill="#8B5CF6"/>
+      <text x="36" y="31" text-anchor="middle" font-family="system-ui" font-weight="700" font-size="12" fill="white">LW</text>
+      <text x="60" y="20" font-family="system-ui" font-weight="700" font-size="12" fill="#1A1A2E">Lisa Weber</text>
+      <text x="60" y="35" font-family="system-ui" font-weight="400" font-size="10" fill="#8888A0">Marketing</text>
+      <g transform="translate(180, 14)">
+        <rect width="80" height="22" rx="11" fill="#EDE9FE"/>
+        <circle cx="12" cy="11" r="4" fill="#8B5CF6"/>
+        <text x="22" y="15" font-family="system-ui" font-weight="600" font-size="9" fill="#6D28D9">Homeoffice</text>
+      </g>
+      <text x="260" y="30" font-family="system-ui" font-weight="700" font-size="13" fill="#1A1A2E">4:05h</text>
+      <text x="330" y="30" font-family="system-ui" font-weight="700" font-size="13" fill="#1A1A2E">24:20h</text>
+      <text x="400" y="30" font-family="system-ui" font-weight="700" font-size="13" fill="#0066CC">-1:40h</text>
+    </g>
+
+    <!-- Summary bar -->
+    <g transform="translate(0, 330)">
+      <rect x="0" y="0" width="480" height="30" rx="0" fill="#F8F8FC"/>
+      <rect x="0" y="0" width="480" height="1" fill="#E2E2EA"/>
+      <text x="24" y="20" font-family="system-ui" font-weight="600" font-size="10" fill="#8888A0">4 Mitarbeitende</text>
+      <text x="260" y="20" font-family="system-ui" font-weight="600" font-size="10" fill="#8888A0">3 aktiv</text>
+      <text x="400" y="20" font-family="system-ui" font-weight="700" font-size="10" fill="#F59E0B">+5:05h Überstd.</text>
+    </g>
+  </svg>
+</div>

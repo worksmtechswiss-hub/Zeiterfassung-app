@@ -12,7 +12,7 @@ export const footerNav = {
     links: [
       { label: 'Features', href: '/features/' },
       { label: 'Preise', href: '/preise/' },
-      { label: 'Kostenlos testen', href: '/kostenlos/' },
+      { label: '30 Tage gratis testen', href: '/kostenlos/' },
     ],
   },
   zielgruppen: {

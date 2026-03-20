@@ -1,72 +1,38 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
-import PricingTable from '../components/PricingTable.astro';
-import ComparisonTable from '../components/ComparisonTable.astro';
 import FAQ from '../components/FAQ.astro';
 import CTASection from '../components/CTASection.astro';
-import SectionHeading from '../components/SectionHeading.astro';
-import { plans } from '../data/pricing';
+import { ctaUrl } from '../data/navigation';
+import { plan } from '../data/pricing';
 import { preiseFaq } from '../data/faq';
 
 const schema = [
   {
     '@context': 'https://schema.org',
     '@type': 'Product',
-    name: 'Zeiterfassung App',
+    name: 'Finito Pro – Zeiterfassung App',
     description: 'Zeiterfassungs-App für Freelancer und KMU in der Schweiz',
     brand: {
       '@type': 'Organization',
-      name: 'Zeiterfassung App',
+      name: 'Finito Pro',
     },
-    offers: [
-      {
-        '@type': 'Offer',
-        name: 'Free',
-        price: '0',
+    offers: {
+      '@type': 'Offer',
+      name: 'Finito Pro',
+      price: '30',
+      priceCurrency: 'CHF',
+      description: 'Alle Features, unbegrenzte Benutzer, 30 Tage kostenlos testen',
+      priceValidUntil: '2027-12-31',
+      availability: 'https://schema.org/InStock',
+      priceSpecification: {
+        '@type': 'UnitPriceSpecification',
+        price: '30',
         priceCurrency: 'CHF',
-        description: 'Perfekt für Einzelpersonen und zum Testen',
-        priceValidUntil: '2027-12-31',
-        availability: 'https://schema.org/InStock',
+        billingDuration: 'P1M',
+        valueAddedTaxIncluded: true,
       },
-      {
-        '@type': 'Offer',
-        name: 'Pro',
-        price: '9',
-        priceCurrency: 'CHF',
-        description: 'Für Freelancer und Selbständige',
-        priceValidUntil: '2027-12-31',
-        availability: 'https://schema.org/InStock',
-        priceSpecification: {
-          '@type': 'UnitPriceSpecification',
-          price: '9',
-          priceCurrency: 'CHF',
-          billingDuration: 'P1M',
-          valueAddedTaxIncluded: true,
-        },
-      },
-      {
-        '@type': 'Offer',
-        name: 'Team',
-        price: '6',
-        priceCurrency: 'CHF',
-        description: 'Für KMU und Teams ab 2 Personen',
-        priceValidUntil: '2027-12-31',
-        availability: 'https://schema.org/InStock',
-        priceSpecification: {
-          '@type': 'UnitPriceSpecification',
-          price: '6',
-          priceCurrency: 'CHF',
-          billingDuration: 'P1M',
-          referenceQuantity: {
-            '@type': 'QuantitativeValue',
-            value: '1',
-            unitText: 'Benutzer',
-          },
-          valueAddedTaxIncluded: true,
-        },
-      },
-    ],
+    },
   },
   {
     '@context': 'https://schema.org',
@@ -85,54 +51,107 @@ const schema = [
 
 <BaseLayout
   title="Preise – Zeiterfassung App Schweiz | Transparent & fair"
-  description="Faire Preise für Schweizer Freelancer und KMU. Kostenloser Einstieg, keine versteckten Kosten. Alle Preise in CHF inkl. MwSt."
+  description="CHF 30 pro Monat – alle Features, unbegrenzte Benutzer. 30 Tage kostenlos testen. Keine versteckten Kosten. Preise in CHF inkl. MwSt."
   schema={schema}
 >
   <!-- Hero -->
   <Hero
     compact={true}
-    title="Einfache, faire Preise für jeden Bedarf"
-    subtitle="Alle Preise in CHF inkl. MwSt. Keine versteckten Kosten."
-    cta2Text="Features ansehen"
-    cta2Href="/features/"
+    title="Ein Plan. Alles drin. Fair."
+    subtitle="Keine komplizierten Preisstufen. Ein Abo mit allen Features für CHF 30/Monat."
   />
 
-  <!-- Pricing Table -->
+  <!-- Pricing Card -->
   <section class="py-16 lg:py-24">
     <div class="max-w-container mx-auto px-4 sm:px-6 lg:px-8">
-      <PricingTable plans={plans} />
+      <div class="max-w-xl mx-auto">
+        <div class="relative bg-white rounded-card border-2 border-primary p-8 lg:p-12 shadow-lg">
+          <!-- Badge -->
+          <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-white text-xs font-bold px-4 py-1 rounded-full">
+            30 Tage kostenlos testen
+          </span>
+
+          <!-- Plan name -->
+          <div class="text-center mb-8">
+            <h2 class="font-outfit font-bold text-2xl text-text">{plan.name}</h2>
+            <p class="text-text-muted mt-1">{plan.description}</p>
+          </div>
+
+          <!-- Price -->
+          <div class="text-center mb-8">
+            <div class="flex items-baseline justify-center gap-1">
+              <span class="font-outfit font-black text-6xl text-text">{plan.price}</span>
+              <span class="text-text-muted text-lg">{plan.period}</span>
+            </div>
+            <p class="text-text-muted text-sm mt-2">Inkl. MwSt. · Unbegrenzte Benutzer</p>
+          </div>
+
+          <!-- CTA -->
+          <a
+            href={ctaUrl}
+            class="block w-full text-center py-4 bg-primary text-white font-bold text-lg rounded-button hover:bg-primary-hover transition-all shadow-md hover:shadow-lg"
+          >
+            30 Tage kostenlos testen
+          </a>
+          <p class="text-center text-text-muted text-sm mt-3">Keine Kreditkarte nötig · Jederzeit kündbar</p>
+
+          <!-- Divider -->
+          <div class="border-t border-border my-8"></div>
+
+          <!-- Features -->
+          <h3 class="font-outfit font-bold text-lg text-text mb-4">Alles inklusive:</h3>
+          <ul class="grid sm:grid-cols-2 gap-3">
+            {plan.features.map((f) => (
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-success mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+                </svg>
+                <span class="text-text-secondary text-sm">{f}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- Feature Comparison -->
+  <!-- Why one plan -->
   <section class="py-16 lg:py-24 bg-surface">
     <div class="max-w-container mx-auto px-4 sm:px-6 lg:px-8">
-      <SectionHeading
-        title="Alle Features im Vergleich"
-        subtitle="Detaillierte Übersicht aller Funktionen nach Plan."
-      />
-      <div class="max-w-4xl mx-auto">
-        <ComparisonTable
-          headers={['Free', 'Pro', 'Team']}
-          rows={[
-            { feature: 'Benutzer', values: ['1', '1', 'Unbegrenzt'] },
-            { feature: 'Zeiterfassung (Timer & manuell)', values: [true, true, true] },
-            { feature: 'Mobile App (iOS & Android)', values: [true, true, true] },
-            { feature: 'Daten in der Schweiz', values: [true, true, true] },
-            { feature: 'Projekte', values: ['Bis zu 3', 'Unbegrenzt', 'Unbegrenzt'] },
-            { feature: 'Monatsübersicht', values: [true, true, true] },
-            { feature: 'Kundenrapporte', values: [false, true, true] },
-            { feature: 'Überstunden-Tracking', values: [false, true, true] },
-            { feature: 'Exporte (PDF, CSV, Excel)', values: [false, true, true] },
-            { feature: 'GPS-Zeiterfassung', values: [false, true, true] },
-            { feature: 'Absenzen & Ferienverwaltung', values: [false, false, true] },
-            { feature: 'Rollen & Genehmigungen', values: [false, false, true] },
-            { feature: 'Team-Dashboard', values: [false, false, true] },
-            { feature: 'ArG-konforme Rapporte', values: [false, false, true] },
-            { feature: 'API-Zugang', values: [false, false, true] },
-            { feature: 'Prioritäts-Support', values: [false, true, true] },
-          ]}
-        />
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="font-outfit font-bold text-3xl lg:text-[40px] text-text mb-6">Warum nur ein Plan?</h2>
+        <p class="text-text-secondary text-lg leading-relaxed mb-12">
+          Wir glauben an Einfachheit — auch beim Preis. Kein Feature-Gating, keine versteckten Upgrades, keine Überraschungen. Sie bekommen alles, was Finito Pro kann, für einen fairen Preis.
+        </p>
+        <div class="grid sm:grid-cols-3 gap-6">
+          <div class="bg-white rounded-card p-6 shadow-sm border border-border/50">
+            <div class="w-12 h-12 bg-primary-light rounded-xl flex items-center justify-center mb-4 mx-auto">
+              <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <h3 class="font-bold text-text mb-2">Transparent</h3>
+            <p class="text-text-secondary text-sm">CHF 30/Monat. Punkt. Keine versteckten Kosten oder Zusatzpakete.</p>
+          </div>
+          <div class="bg-white rounded-card p-6 shadow-sm border border-border/50">
+            <div class="w-12 h-12 bg-primary-light rounded-xl flex items-center justify-center mb-4 mx-auto">
+              <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+            </div>
+            <h3 class="font-bold text-text mb-2">Unbegrenzt</h3>
+            <p class="text-text-secondary text-sm">So viele Benutzer wie Sie brauchen. Keine Kosten pro Kopf.</p>
+          </div>
+          <div class="bg-white rounded-card p-6 shadow-sm border border-border/50">
+            <div class="w-12 h-12 bg-primary-light rounded-xl flex items-center justify-center mb-4 mx-auto">
+              <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+              </svg>
+            </div>
+            <h3 class="font-bold text-text mb-2">Risikofrei</h3>
+            <p class="text-text-secondary text-sm">30 Tage gratis testen. Jederzeit monatlich kündbar.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -142,7 +161,8 @@ const schema = [
 
   <!-- CTA -->
   <CTASection
-    title="Bereit? Kostenlos starten – in 2 Minuten"
-    subtitle="Keine Kreditkarte nötig. Dauerhaft kostenloser Plan verfügbar. Schweizer Qualität."
+    title="30 Tage kostenlos testen"
+    subtitle="Alle Features. Keine Kreditkarte. Keine Verpflichtung. Schweizer Qualität."
+    buttonText="Jetzt kostenlos starten"
   />
 </BaseLayout>

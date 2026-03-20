@@ -8,6 +8,7 @@ interface Props {
 }
 
 const { title, description, features = [], imagePosition = 'right', icon } = Astro.props;
+const hasSlot = Astro.slots.has('default');
 ---
 
 <div class={`flex flex-col lg:flex-row items-center gap-12 lg:gap-16 ${imagePosition === 'left' ? 'lg:flex-row-reverse' : ''}`}>
@@ -34,17 +35,21 @@ const { title, description, features = [], imagePosition = 'right', icon } = Ast
     )}
   </div>
 
-  <!-- Image Placeholder -->
+  <!-- Illustration / Image -->
   <div class="flex-1 w-full">
-    <div class="bg-surface rounded-card border border-border/50 aspect-[4/3] flex items-center justify-center">
-      <div class="text-center p-8">
-        <div class="w-16 h-16 bg-primary-light rounded-2xl flex items-center justify-center mx-auto mb-4">
-          <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-          </svg>
+    {hasSlot ? (
+      <slot />
+    ) : (
+      <div class="bg-surface rounded-card border border-border/50 aspect-[4/3] flex items-center justify-center">
+        <div class="text-center p-8">
+          <div class="w-16 h-16 bg-primary-light rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+          </div>
+          <p class="text-text-muted text-sm">App-Screenshot</p>
         </div>
-        <p class="text-text-muted text-sm">App-Screenshot</p>
       </div>
-    </div>
+    )}
   </div>
 </div>

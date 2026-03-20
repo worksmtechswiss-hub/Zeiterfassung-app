@@ -10,6 +10,10 @@ import CTASection from '../components/CTASection.astro';
 import { freelancerTestimonials } from '../data/testimonials';
 import { freelancerFaq } from '../data/faq';
 import { ctaUrl } from '../data/navigation';
+import TimerAnimation from '../components/illustrations/TimerAnimation.astro';
+import ProjectTracking from '../components/illustrations/ProjectTracking.astro';
+import MobileApp from '../components/illustrations/MobileApp.astro';
+import ReportExport from '../components/illustrations/ReportExport.astro';
 
 const schema = [
   {
@@ -38,7 +42,9 @@ const schema = [
     subtitle="Erfassen Sie Projektzeiten mühelos, erstellen Sie professionelle Kundenrapporte und behalten Sie Ihre Produktivität im Blick. Für Freelancer in der Schweiz."
     cta2Text="Alle Features ansehen"
     cta2Href="/features/"
-  />
+  >
+    <TimerAnimation />
+  </Hero>
 
   <!-- Pain Points -->
   <section class="py-16 lg:py-24">
@@ -80,7 +86,9 @@ const schema = [
           'Projektfortschritt in Echtzeit verfolgen',
         ]}
         imagePosition="right"
-      />
+      >
+        <ProjectTracking />
+      </FeatureRow>
       <FeatureRow
         title="Rapporte & Exporte – professionell und schnell"
         description="Erstellen Sie Stundenrapporte als PDF für Ihre Kunden. Exportieren Sie Daten für Ihre Buchhaltung oder Steuererklärung."
@@ -91,7 +99,9 @@ const schema = [
           'Direkt per E-Mail an Kunden senden',
         ]}
         imagePosition="left"
-      />
+      >
+        <ReportExport />
+      </FeatureRow>
       <FeatureRow
         title="Mobile App – Zeiten erfassen, wo immer Sie arbeiten"
         description="Ob im Homeoffice, beim Kunden oder unterwegs: Mit der iOS- und Android-App erfassen Sie Zeiten in Sekunden. Auch offline."
@@ -102,7 +112,9 @@ const schema = [
           'Push-Erinnerungen für vergessene Einträge',
         ]}
         imagePosition="right"
-      />
+      >
+        <MobileApp />
+      </FeatureRow>
     </div>
   </section>
 

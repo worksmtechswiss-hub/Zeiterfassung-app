@@ -4,6 +4,7 @@ import Hero from '../components/Hero.astro';
 import CTASection from '../components/CTASection.astro';
 import FAQ from '../components/FAQ.astro';
 import { homeFaq } from '../data/faq';
+import ComplianceShield from '../components/illustrations/ComplianceShield.astro';
 
 const gesetzFaq = [
   homeFaq[0], // Ist Zeiterfassung in der Schweiz Pflicht?
@@ -70,7 +71,9 @@ const schema = [
     compact={true}
     title="Zeiterfassung in der Schweiz: Was sagt das Gesetz?"
     subtitle="Arbeitgeber in der Schweiz sind gesetzlich verpflichtet, die Arbeitszeiten ihrer Mitarbeitenden zu erfassen. Doch was genau schreibt das Gesetz vor – und welche Ausnahmen gibt es?"
-  />
+  >
+    <ComplianceShield />
+  </Hero>
 
   <!-- Long-form Article -->
   <section class="py-16 lg:py-24">

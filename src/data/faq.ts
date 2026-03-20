@@ -5,11 +5,11 @@ export const homeFaq = [
   },
   {
     question: 'Welche App eignet sich für Zeiterfassung in der Schweiz?',
-    answer: 'Eine gute Zeiterfassungs-App für die Schweiz sollte ArG-konform sein, Daten in der Schweiz speichern und einfach zu bedienen sein. Zeiterfassung App erfüllt all diese Kriterien und bietet zusätzlich Projektzeiterfassung, Absenzverwaltung und mobile Apps.',
+    answer: 'Eine gute Zeiterfassungs-App für die Schweiz sollte ArG-konform sein, Daten in der Schweiz speichern und einfach zu bedienen sein. Zeiterfassung App (powered by Finito Pro) erfüllt all diese Kriterien und bietet zusätzlich Projektzeiterfassung, Absenzverwaltung und mobile Apps.',
   },
   {
-    question: 'Ist die App wirklich kostenlos?',
-    answer: 'Ja, der Free-Plan ist dauerhaft kostenlos — keine Testphase, keine Kreditkarte. Er eignet sich perfekt für Einzelpersonen. Für Teams und erweiterte Funktionen gibt es die Pro- und Team-Pläne. <a href="/preise/" class="text-primary hover:underline">Alle Preise ansehen</a>.',
+    question: 'Kann ich die App kostenlos testen?',
+    answer: 'Ja, Sie können Finito Pro 30 Tage lang kostenlos und unverbindlich testen — mit allen Features, ohne Einschränkungen und ohne Kreditkarte. Nach der Testphase kostet das Abo CHF 30 pro Monat. <a href="/preise/" class="text-primary hover:underline">Mehr zu den Preisen</a>.',
   },
   {
     question: 'Wo werden meine Daten gespeichert?',
@@ -39,8 +39,8 @@ export const freelancerFaq = [
     answer: 'Wählen Sie das Projekt, den Zeitraum und klicken Sie auf «Exportieren». Sie erhalten einen professionellen Rapport als PDF mit allen erfassten Stunden, Aktivitäten und Gesamtbetrag.',
   },
   {
-    question: 'Ist der Free-Plan ausreichend für Freelancer?',
-    answer: 'Der Free-Plan eignet sich zum Testen. Für Freelancer empfehlen wir den Pro-Plan (CHF 9/Monat), der unbegrenzte Projekte, Kundenrapporte und Exporte bietet. <a href="/preise/" class="text-primary hover:underline">Preise vergleichen</a>.',
+    question: 'Was kostet die App?',
+    answer: 'CHF 30 pro Monat — alle Features inklusive, keine Einschränkungen. Sie können 30 Tage kostenlos testen. <a href="/preise/" class="text-primary hover:underline">Preise ansehen</a>.',
   },
 ];
 
@@ -63,25 +63,29 @@ export const kmuFaq = [
   },
   {
     question: 'Was kostet die Zeiterfassung für mein Team?',
-    answer: 'Der Team-Plan kostet CHF 6 pro Benutzer und Monat. Für 10 Mitarbeitende sind das CHF 60/Monat — günstiger als eine Stunde Arbeitszeit. <a href="/preise/" class="text-primary hover:underline">Alle Preise ansehen</a>.',
+    answer: 'CHF 30 pro Monat — unbegrenzte Benutzer, alle Features inklusive. Sie können 30 Tage kostenlos testen. <a href="/preise/" class="text-primary hover:underline">Alle Preise ansehen</a>.',
   },
 ];
 
 export const preiseFaq = [
   {
     question: 'Kann ich jederzeit kündigen?',
-    answer: 'Ja, alle Pläne sind monatlich kündbar. Keine Mindestvertragslaufzeit, keine versteckten Kosten.',
+    answer: 'Ja, das Abo ist monatlich kündbar. Keine Mindestvertragslaufzeit, keine versteckten Kosten.',
   },
   {
-    question: 'Gibt es Jahresrabatte?',
-    answer: 'Ja, bei jährlicher Zahlung sparen Sie 20%. Kontaktieren Sie uns für ein individuelles Angebot.',
+    question: 'Was passiert nach den 30 Testtagen?',
+    answer: 'Nach 30 Tagen wird Ihr Konto pausiert, bis Sie sich für das Abo entscheiden. Keine automatische Abbuchung — Sie behalten die volle Kontrolle.',
   },
   {
     question: 'Sind die Preise in CHF inklusive MwSt.?',
     answer: 'Ja, alle angegebenen Preise verstehen sich in Schweizer Franken (CHF) inklusive Mehrwertsteuer.',
   },
   {
-    question: 'Was passiert nach der kostenlosen Testphase?',
-    answer: 'Nach 30 Tagen werden Sie automatisch auf den Free-Plan umgestellt — keine automatische Abbuchung. Sie können jederzeit upgraden.',
+    question: 'Gibt es einen Rabatt bei jährlicher Zahlung?',
+    answer: 'Ja, bei jährlicher Zahlung sparen Sie 20%. Kontaktieren Sie uns für ein individuelles Angebot.',
+  },
+  {
+    question: 'Wie viele Benutzer sind im Abo enthalten?',
+    answer: 'Unbegrenzt. Für CHF 30/Monat können Sie so viele Mitarbeitende einladen, wie Sie möchten. Alle Features sind inklusive.',
   },
 ];
