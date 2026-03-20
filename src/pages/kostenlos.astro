@@ -1,0 +1,102 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import ComparisonTable from '../components/ComparisonTable.astro';
+import CTASection from '../components/CTASection.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import FeatureCard from '../components/FeatureCard.astro';
+import { ctaUrl } from '../data/navigation';
+---
+
+<BaseLayout
+  title="Zeiterfassung kostenlos – Gratis App für Freelancer in der Schweiz"
+  description="Kostenlose Zeiterfassung für Schweizer Freelancer und Einzelpersonen. Stunden erfassen, Projekte verwalten – dauerhaft gratis."
+>
+  <!-- Hero -->
+  <Hero
+    title="Zeiterfassung kostenlos – dauerhaft gratis für Einzelpersonen"
+    subtitle="Stunden erfassen, Projekte verwalten, Monatsübersicht nutzen – ohne Kosten, ohne Ablaufdatum. Daten in der Schweiz."
+    cta1Text="Gratis Konto erstellen"
+    cta1Href={ctaUrl}
+    cta2Text="Preise vergleichen"
+    cta2Href="/preise/"
+  />
+
+  <!-- What's included in Free -->
+  <section class="py-16 lg:py-24">
+    <div class="max-w-container mx-auto px-4 sm:px-6 lg:px-8">
+      <SectionHeading
+        title="Was ist im Gratis-Plan enthalten?"
+        subtitle="Alles, was Sie als Einzelperson für die Zeiterfassung brauchen – dauerhaft kostenlos."
+      />
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <FeatureCard
+          icon='<svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>'
+          title="Zeiterfassung mit Timer"
+          description="Starten Sie den Timer mit einem Klick oder erfassen Sie Zeiten manuell. Flexibel und sekundengenau."
+        />
+        <FeatureCard
+          icon='<svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" /></svg>'
+          title="Bis zu 3 Projekte"
+          description="Verwalten Sie bis zu drei Projekte gleichzeitig. Ideal für Freelancer mit wenigen Aufträgen."
+        />
+        <FeatureCard
+          icon='<svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>'
+          title="Monatsübersicht"
+          description="Behalten Sie den Überblick über Ihre Arbeitszeiten. Wochenansicht, Monatsansicht und Zusammenfassungen."
+        />
+        <FeatureCard
+          icon='<svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>'
+          title="Mobile App"
+          description="Nutzen Sie die App auf iPhone, Android oder im Browser. Ihre Daten synchronisieren sich automatisch."
+        />
+        <FeatureCard
+          icon='<svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>'
+          title="Daten in der Schweiz"
+          description="Ihre Daten werden ausschliesslich in der Schweiz gespeichert. DSG-konform und sicher."
+        />
+        <FeatureCard
+          icon='<svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" /></svg>'
+          title="Keine Installation nötig"
+          description="Starten Sie direkt im Browser – ohne Software-Installation. Erstellen Sie ein Konto und legen Sie los."
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Free vs Pro -->
+  <section class="py-16 lg:py-24 bg-surface">
+    <div class="max-w-container mx-auto px-4 sm:px-6 lg:px-8">
+      <SectionHeading
+        title="Gratis vs. Pro – was ist der Unterschied?"
+        subtitle="Der Free-Plan reicht für den Einstieg. Wenn Sie mehr brauchen, upgraden Sie jederzeit."
+      />
+      <div class="max-w-3xl mx-auto">
+        <ComparisonTable
+          headers={['Free', 'Pro']}
+          rows={[
+            { feature: 'Benutzer', values: ['1', '1'] },
+            { feature: 'Zeiterfassung (Timer & manuell)', values: [true, true] },
+            { feature: 'Mobile App (iOS & Android)', values: [true, true] },
+            { feature: 'Daten in der Schweiz', values: [true, true] },
+            { feature: 'Projekte', values: ['Bis zu 3', 'Unbegrenzt'] },
+            { feature: 'Monatsübersicht', values: [true, true] },
+            { feature: 'Kundenrapporte (PDF)', values: [false, true] },
+            { feature: 'Überstunden-Tracking', values: [false, true] },
+            { feature: 'Exporte (PDF, CSV, Excel)', values: [false, true] },
+            { feature: 'GPS-Zeiterfassung', values: [false, true] },
+            { feature: 'Prioritäts-Support', values: [false, true] },
+            { feature: 'Preis', values: ['CHF 0', 'CHF 9 / Monat'] },
+          ]}
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <CTASection
+    title="Gratis Konto erstellen – in 2 Minuten"
+    subtitle="Keine Kreditkarte nötig. Kein Ablaufdatum. Einfach loslegen."
+    buttonText="Gratis Konto erstellen"
+  />
+</BaseLayout>

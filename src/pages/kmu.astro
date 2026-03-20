@@ -1,0 +1,180 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import FeatureCard from '../components/FeatureCard.astro';
+import FeatureRow from '../components/FeatureRow.astro';
+import TestimonialGrid from '../components/TestimonialGrid.astro';
+import FAQ from '../components/FAQ.astro';
+import CTASection from '../components/CTASection.astro';
+import ComparisonTable from '../components/ComparisonTable.astro';
+import { kmuTestimonials } from '../data/testimonials';
+import { kmuFaq } from '../data/faq';
+import { ctaUrl } from '../data/navigation';
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: kmuFaq.map((item) => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.answer.replace(/<[^>]*>/g, ''),
+      },
+    })),
+  },
+];
+---
+
+<BaseLayout
+  title="Zeiterfassung für KMU Schweiz – ArG-konform & einfach für Ihr Team"
+  description="Zeiterfassung für Schweizer KMU: Mitarbeiter-Stunden erfassen, Überstunden verwalten und ArG-konform dokumentieren. Für Teams ab 2 Personen."
+  schema={schema}
+>
+  <!-- Hero -->
+  <Hero
+    title="Zeiterfassung für Ihr KMU – gesetzlich korrekt, ohne Aufwand"
+    subtitle="Erfassen Sie Arbeitszeiten Ihrer Mitarbeitenden ArG-konform. Überstunden, Absenzen und Rapporte – alles in einer einfachen App. Für Schweizer Teams ab 2 Personen."
+    cta2Text="Alle Features ansehen"
+    cta2Href="/features/"
+  />
+
+  <!-- Compliance Section -->
+  <section class="py-16 lg:py-24">
+    <div class="max-w-container mx-auto px-4 sm:px-6 lg:px-8">
+      <SectionHeading
+        title="Gesetzeskonforme Zeiterfassung – ohne Aufwand"
+        subtitle="Schweizer Arbeitgeber sind zur Zeiterfassung verpflichtet. Wir machen die Einhaltung einfach."
+        tag="Compliance"
+      />
+      <div class="max-w-3xl mx-auto">
+        <div class="bg-blue-50 border border-blue-200 rounded-card p-6 lg:p-8">
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center shrink-0 mt-0.5">
+              <svg class="w-5 h-5 text-blue-700" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m0-10.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.75c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.249-8.25-3.286zm0 13.036h.008v.008H12v-.008z" />
+              </svg>
+            </div>
+            <div>
+              <h3 class="font-outfit font-bold text-lg text-blue-900 mb-2">Art. 46 Arbeitsgesetz (ArG)</h3>
+              <p class="text-blue-800 leading-relaxed mb-4">
+                Arbeitgeber in der Schweiz sind verpflichtet, die Arbeitszeiten ihrer Mitarbeitenden systematisch zu erfassen – inklusive Beginn, Ende, Pausen und Überstunden. Die Aufzeichnungen müssen <strong>mindestens 5 Jahre</strong> aufbewahrt werden.
+              </p>
+              <ul class="space-y-2">
+                <li class="flex items-start gap-2 text-blue-800">
+                  <svg class="w-5 h-5 text-blue-600 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>Automatische Erfassung von Arbeitszeit, Pausen und Überstunden</span>
+                </li>
+                <li class="flex items-start gap-2 text-blue-800">
+                  <svg class="w-5 h-5 text-blue-600 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>Lückenloser Audit-Trail für Kontrollen</span>
+                </li>
+                <li class="flex items-start gap-2 text-blue-800">
+                  <svg class="w-5 h-5 text-blue-600 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>Daten werden 5 Jahre sicher in der Schweiz gespeichert</span>
+                </li>
+                <li class="flex items-start gap-2 text-blue-800">
+                  <svg class="w-5 h-5 text-blue-600 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>Vereinfachte Zeiterfassung für Betriebe unter 50 Mitarbeitenden möglich</span>
+                </li>
+              </ul>
+              <a href="/gesetz/" class="inline-flex items-center gap-1 mt-4 text-blue-700 font-bold hover:underline text-sm">
+                Mehr zum Arbeitsgesetz erfahren
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Feature Rows -->
+  <section class="py-16 lg:py-24 bg-surface">
+    <div class="max-w-container mx-auto px-4 sm:px-6 lg:px-8 space-y-20 lg:space-y-32">
+      <FeatureRow
+        title="Team-Übersicht – alle Mitarbeitenden im Blick"
+        description="Sehen Sie auf einen Blick, wer gerade arbeitet, wer im Ferien ist und wo die Stunden hinfliessen. Das Team-Dashboard gibt Ihnen die Kontrolle."
+        features={[
+          'Echtzeit-Übersicht aller Mitarbeitenden',
+          'Individuelle Arbeitszeitmodelle pro Person',
+          'Rollenbasierte Zugriffsrechte (Admin, Vorgesetzte, Mitarbeitende)',
+          'Einfaches Onboarding neuer Teammitglieder',
+        ]}
+        imagePosition="right"
+      />
+      <FeatureRow
+        title="Überstunden & Absenzen automatisch verwalten"
+        description="Überstunden werden automatisch berechnet. Ferien, Krankheitstage und Absenzen verwalten Ihre Mitarbeitenden selbst – Sie genehmigen nur noch."
+        features={[
+          'Automatische Überstundenberechnung nach Schweizer Recht',
+          'Ferienguthaben und Resturlaub auf einen Blick',
+          'Genehmigungsprozess für Absenzen und Ferien',
+          'Benachrichtigungen bei Anträgen und Genehmigungen',
+        ]}
+        imagePosition="left"
+      />
+      <FeatureRow
+        title="Rapporte für Kunden, Buchhaltung und Behörden"
+        description="Exportieren Sie Stundenrapporte als PDF, CSV oder Excel. ArG-konforme Zeitnachweise für Kontrollen sind jederzeit verfügbar."
+        features={[
+          'ArG-konforme Monats- und Jahresrapporte',
+          'PDF-Rapporte mit Firmenlogo',
+          'CSV/Excel-Export für Lohnbuchhaltung',
+          'Automatische Berichte per E-Mail an Vorgesetzte',
+        ]}
+        imagePosition="right"
+      />
+    </div>
+  </section>
+
+  <!-- Pricing Teaser -->
+  <section class="py-16 lg:py-24">
+    <div class="max-w-container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <SectionHeading
+        title="Faire Preise für Schweizer KMU"
+        subtitle="Ab CHF 6 pro Benutzer und Monat. Keine versteckten Kosten. Monatlich kündbar."
+      />
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a
+          href="/preise/"
+          class="inline-flex items-center justify-center px-8 py-3.5 bg-primary text-white font-bold text-base rounded-button hover:bg-primary-hover transition-all shadow-md hover:shadow-lg"
+        >
+          Preise ansehen
+        </a>
+        <a
+          href="/kostenlos/"
+          class="inline-flex items-center justify-center px-8 py-3.5 bg-white text-primary font-bold text-base rounded-button border-2 border-primary/20 hover:border-primary/40 transition-all"
+        >
+          Kostenlos testen
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <TestimonialGrid testimonials={kmuTestimonials} title="Das sagen Schweizer KMU" />
+
+  <!-- FAQ -->
+  <FAQ items={kmuFaq} title="Häufige Fragen von KMU" />
+
+  <!-- CTA -->
+  <CTASection
+    title="Jetzt 30 Tage gratis testen"
+    subtitle="Keine Kreditkarte nötig. Alle Funktionen freigeschaltet. Für Ihr ganzes Team."
+    buttonText="Kostenlos starten"
+    buttonHref={ctaUrl}
+  />
+</BaseLayout>

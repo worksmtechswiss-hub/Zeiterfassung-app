@@ -1,0 +1,45 @@
+---
+interface Props {
+  headers: string[];
+  rows: { feature: string; values: (string | boolean)[] }[];
+}
+
+const { headers, rows } = Astro.props;
+---
+
+<div class="overflow-x-auto">
+  <table class="w-full border-collapse">
+    <thead>
+      <tr>
+        <th class="text-left py-4 px-4 font-outfit font-bold text-text border-b-2 border-border">Funktion</th>
+        {headers.map((h) => (
+          <th class="text-center py-4 px-4 font-outfit font-bold text-text border-b-2 border-border">{h}</th>
+        ))}
+      </tr>
+    </thead>
+    <tbody>
+      {rows.map((row) => (
+        <tr class="border-b border-border/50 hover:bg-surface/50">
+          <td class="py-3.5 px-4 text-text-secondary">{row.feature}</td>
+          {row.values.map((val) => (
+            <td class="py-3.5 px-4 text-center">
+              {typeof val === 'boolean' ? (
+                val ? (
+                  <svg class="w-5 h-5 text-success mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+                  </svg>
+                ) : (
+                  <svg class="w-5 h-5 text-text-muted mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                )
+              ) : (
+                <span class="text-text-secondary text-sm">{val}</span>
+              )}
+            </td>
+          ))}
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>

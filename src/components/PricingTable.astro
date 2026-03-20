@@ -1,0 +1,55 @@
+---
+import { ctaUrl } from '../data/navigation';
+
+interface Plan {
+  name: string;
+  price: string;
+  period: string;
+  description: string;
+  features: string[];
+  highlighted?: boolean;
+  cta: string;
+}
+
+interface Props {
+  plans: Plan[];
+}
+
+const { plans } = Astro.props;
+---
+
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+  {plans.map((plan) => (
+    <div class={`relative rounded-card p-6 lg:p-8 border-2 flex flex-col ${plan.highlighted ? 'border-primary bg-white shadow-lg scale-[1.02]' : 'border-border/50 bg-white shadow-sm'}`}>
+      {plan.highlighted && (
+        <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-white text-xs font-bold px-4 py-1 rounded-full">
+          Beliebtester Plan
+        </span>
+      )}
+      <div class="mb-6">
+        <h3 class="font-outfit font-bold text-xl text-text">{plan.name}</h3>
+        <p class="text-text-muted text-sm mt-1">{plan.description}</p>
+      </div>
+      <div class="mb-6">
+        <span class="font-outfit font-black text-4xl text-text">{plan.price}</span>
+        <span class="text-text-muted text-sm ml-1">{plan.period}</span>
+      </div>
+      <ul class="space-y-3 mb-8 flex-1">
+        {plan.features.map((f) => (
+          <li class="flex items-start gap-3">
+            <svg class="w-5 h-5 text-success mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+            </svg>
+            <span class="text-text-secondary text-sm">{f}</span>
+          </li>
+        ))}
+      </ul>
+      <a
+        href={ctaUrl}
+        class={`inline-flex items-center justify-center w-full py-3 font-bold text-sm rounded-button transition-all ${plan.highlighted ? 'bg-primary text-white hover:bg-primary-hover shadow-md' : 'bg-surface text-text hover:bg-primary-light'}`}
+      >
+        {plan.cta}
+      </a>
+    </div>
+  ))}
+</div>

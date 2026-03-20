@@ -1,0 +1,47 @@
+---
+import { footerNav, ctaUrl } from '../data/navigation';
+const columns = Object.values(footerNav);
+const year = new Date().getFullYear();
+---
+
+<footer class="bg-text text-white">
+  <div class="max-w-container mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
+    <!-- Top -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12">
+      {columns.map((col) => (
+        <div>
+          <h3 class="font-bold text-sm uppercase tracking-wider text-white/60 mb-4">{col.title}</h3>
+          <ul class="space-y-3">
+            {col.links.map((link) => (
+              <li>
+                <a href={link.href} class="text-white/80 hover:text-white transition-colors text-sm">
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+
+    <!-- Divider -->
+    <div class="border-t border-white/10 mt-12 pt-8">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-2">
+          <a href="/" class="font-outfit font-bold text-lg">
+            Zeiterfassung<span class="text-primary">.app</span>
+          </a>
+        </div>
+        <p class="text-white/50 text-sm text-center">
+          &copy; {year} Finito Pro &middot; Schweizer Qualität
+        </p>
+        <a
+          href={ctaUrl}
+          class="inline-flex items-center justify-center px-5 py-2 bg-primary text-white font-bold text-sm rounded-button hover:bg-primary-hover transition-colors"
+        >
+          Kostenlos testen
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>

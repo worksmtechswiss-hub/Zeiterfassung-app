@@ -1,0 +1,87 @@
+---
+import { mainNav, ctaUrl } from '../data/navigation';
+---
+
+<header class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-border">
+  <div class="max-w-container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16 lg:h-20">
+      <!-- Logo -->
+      <a href="/" class="flex items-center gap-2 font-outfit font-bold text-xl text-text">
+        <svg class="w-8 h-8" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="32" height="32" rx="6" fill="#0066CC"/>
+          <text x="16" y="22" text-anchor="middle" font-family="system-ui" font-weight="900" font-size="18" fill="white">Z</text>
+        </svg>
+        <span>Zeiterfassung<span class="text-primary">.app</span></span>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden lg:flex items-center gap-8">
+        {mainNav.map((item) => (
+          <a
+            href={item.href}
+            class="text-text-secondary hover:text-primary transition-colors text-[15px] font-medium"
+          >
+            {item.label}
+          </a>
+        ))}
+      </nav>
+
+      <!-- Desktop CTA -->
+      <div class="hidden lg:flex items-center gap-4">
+        <a
+          href={ctaUrl}
+          class="inline-flex items-center justify-center px-6 py-2.5 bg-primary text-white font-bold text-sm rounded-button hover:bg-primary-hover transition-colors shadow-sm hover:shadow-md"
+        >
+          Kostenlos testen
+        </a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button
+        id="mobile-menu-btn"
+        class="lg:hidden p-2 text-text-secondary hover:text-text"
+        aria-label="Menü öffnen"
+        aria-expanded="false"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          <path id="close-icon" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden lg:hidden border-t border-border bg-white">
+    <nav class="max-w-container mx-auto px-4 py-4 flex flex-col gap-3">
+      {mainNav.map((item) => (
+        <a
+          href={item.href}
+          class="text-text-secondary hover:text-primary transition-colors py-2 text-base font-medium"
+        >
+          {item.label}
+        </a>
+      ))}
+      <a
+        href={ctaUrl}
+        class="inline-flex items-center justify-center px-6 py-3 bg-primary text-white font-bold text-sm rounded-button hover:bg-primary-hover transition-colors mt-2"
+      >
+        Kostenlos testen
+      </a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  const menuIcon = document.getElementById('menu-icon');
+  const closeIcon = document.getElementById('close-icon');
+
+  btn?.addEventListener('click', () => {
+    const isOpen = menu?.classList.toggle('hidden') === false;
+    btn.setAttribute('aria-expanded', String(isOpen));
+    menuIcon?.classList.toggle('hidden', isOpen);
+    closeIcon?.classList.toggle('hidden', !isOpen);
+  });
+</script>

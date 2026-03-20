@@ -1,0 +1,164 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import FeatureCard from '../components/FeatureCard.astro';
+import FeatureRow from '../components/FeatureRow.astro';
+import TestimonialGrid from '../components/TestimonialGrid.astro';
+import FAQ from '../components/FAQ.astro';
+import CTASection from '../components/CTASection.astro';
+import ComparisonTable from '../components/ComparisonTable.astro';
+import { homeFeatureCards } from '../data/features';
+import { testimonials } from '../data/testimonials';
+import { homeFaq } from '../data/faq';
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: 'Zeiterfassung App',
+    applicationCategory: 'BusinessApplication',
+    operatingSystem: 'Web, iOS, Android',
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'CHF',
+    },
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '4.8',
+      ratingCount: '150',
+    },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'Zeiterfassung App',
+    url: 'https://zeiterfassung-app.ch',
+    address: {
+      '@type': 'PostalAddress',
+      addressCountry: 'CH',
+    },
+  },
+];
+---
+
+<BaseLayout
+  title="Zeiterfassung App Schweiz – Einfach, gesetzeskonform & kostenlos testen"
+  description="Die einfachste Zeiterfassungs-App für Freelancer und KMU in der Schweiz. ArG-konform, QR-Rechnung-kompatibel. Kostenlos testen."
+  schema={schema}
+>
+  <!-- Hero -->
+  <Hero
+    title="Zeiterfassung für die Schweiz – so einfach wie nie"
+    subtitle="Stunden erfassen in Sekunden. ArG-konform. Für Freelancer und KMU. Daten bleiben in der Schweiz."
+    cta2Text="Alle Features ansehen"
+    cta2Href="/features/"
+  />
+
+  <!-- Social Proof -->
+  <section class="py-12 border-b border-border/50">
+    <div class="max-w-container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <p class="text-text-muted text-sm font-medium uppercase tracking-wider mb-6">Schweizer Unternehmen vertrauen auf uns</p>
+      <div class="flex flex-wrap items-center justify-center gap-8 lg:gap-16 opacity-40">
+        {['Schreinerei', 'IT-Beratung', 'Architektur', 'Marketing', 'Treuhand'].map((name) => (
+          <div class="flex items-center gap-2">
+            <div class="w-8 h-8 bg-text rounded-md"></div>
+            <span class="font-outfit font-bold text-text text-sm">{name}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Feature Cards -->
+  <section class="py-16 lg:py-24">
+    <div class="max-w-container mx-auto px-4 sm:px-6 lg:px-8">
+      <SectionHeading
+        title="Stunden erfassen in Sekunden – überall, auf jedem Gerät"
+        subtitle="Alles was Sie für die Zeiterfassung in der Schweiz brauchen. Einfach, gesetzeskonform und modern."
+      />
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {homeFeatureCards.map((f) => (
+          <FeatureCard icon={f.icon} title={f.title} description={f.description} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Feature Rows -->
+  <section class="py-16 lg:py-24 bg-surface">
+    <div class="max-w-container mx-auto px-4 sm:px-6 lg:px-8 space-y-20 lg:space-y-32">
+      <FeatureRow
+        title="Projektzeiterfassung – wissen, wohin die Zeit fliesst"
+        description="Erfassen Sie Arbeitszeiten nach Projekten, Kunden und Aktivitäten. Erstellen Sie professionelle Stundenrapporte auf Knopfdruck."
+        features={[
+          'Projekte und Kunden anlegen',
+          'Timer oder manuelle Eingabe',
+          'Projektberichte als PDF exportieren',
+          'Direkt Rechnung aus Projektzeiten erstellen',
+        ]}
+        imagePosition="right"
+      />
+      <FeatureRow
+        title="Überstunden & Absenzen automatisch verwalten"
+        description="Überstunden werden automatisch berechnet. Ferien, Krankheitstage und Absenzen verwalten Ihre Mitarbeitenden selbst über die App."
+        features={[
+          'Automatische Überstundenberechnung',
+          'Ferienguthaben nach Schweizer Recht',
+          'Genehmigungsprozess für Absenzen',
+          'Übersicht für Vorgesetzte',
+        ]}
+        imagePosition="left"
+      />
+      <FeatureRow
+        title="Rapporte & Exporte für Buchhaltung und Kunden"
+        description="Exportieren Sie Stundenrapporte als PDF, CSV oder Excel. Direkt an Kunden senden oder in die Lohnbuchhaltung übernehmen."
+        features={[
+          'PDF-Rapporte mit Firmenlogo',
+          'CSV/Excel-Export für Lohnbuchhaltung',
+          'ArG-konforme Zeitnachweise',
+          'Automatische Monats- und Jahresberichte',
+        ]}
+        imagePosition="right"
+      />
+    </div>
+  </section>
+
+  <!-- Comparison -->
+  <section class="py-16 lg:py-24">
+    <div class="max-w-container mx-auto px-4 sm:px-6 lg:px-8">
+      <SectionHeading
+        title="Warum Zeiterfassung App?"
+        subtitle="Im Vergleich zu Excel-Listen und anderen Tools bietet unsere Schweizer Lösung entscheidende Vorteile."
+      />
+      <div class="max-w-4xl mx-auto">
+        <ComparisonTable
+          headers={['Zeiterfassung App', 'Excel', 'Andere Tools']}
+          rows={[
+            { feature: 'ArG-konform', values: [true, false, 'Teilweise'] },
+            { feature: 'Daten in der Schweiz', values: [true, 'Lokal', false] },
+            { feature: 'Mobile App', values: [true, false, true] },
+            { feature: 'Automatische Überstunden', values: [true, false, 'Teilweise'] },
+            { feature: 'Absenzverwaltung', values: [true, false, 'Teilweise'] },
+            { feature: 'GPS-Zeiterfassung', values: [true, false, 'Teilweise'] },
+            { feature: 'Kostenloser Plan', values: [true, true, 'Teilweise'] },
+            { feature: 'Schweizer Support', values: [true, false, false] },
+          ]}
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <TestimonialGrid testimonials={testimonials} />
+
+  <!-- FAQ -->
+  <FAQ items={homeFaq} />
+
+  <!-- CTA -->
+  <CTASection
+    title="Bereit? Kostenlos starten – in 2 Minuten"
+    subtitle="Keine Kreditkarte nötig. Dauerhaft kostenloser Plan verfügbar. Schweizer Qualität."
+  />
+</BaseLayout>

@@ -1,0 +1,55 @@
+---
+import { ctaUrl } from '../data/navigation';
+
+interface Props {
+  title: string;
+  subtitle: string;
+  cta1Text?: string;
+  cta1Href?: string;
+  cta2Text?: string;
+  cta2Href?: string;
+  compact?: boolean;
+}
+
+const {
+  title,
+  subtitle,
+  cta1Text = 'Kostenlos starten',
+  cta1Href = ctaUrl,
+  cta2Text,
+  cta2Href,
+  compact = false,
+} = Astro.props;
+---
+
+<section class={`bg-gradient-to-b from-primary-light/40 to-white ${compact ? 'py-16 lg:py-20' : 'py-20 lg:py-32'}`}>
+  <div class="max-w-container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class={`${compact ? 'max-w-3xl' : 'max-w-4xl'} mx-auto text-center`}>
+      <h1 class={`font-outfit font-black text-text leading-tight ${compact ? 'text-3xl lg:text-4xl' : 'text-4xl sm:text-5xl lg:text-[56px]'}`}>
+        {title}
+      </h1>
+      <p class={`mt-6 text-text-secondary leading-relaxed ${compact ? 'text-base lg:text-lg' : 'text-lg lg:text-xl'} max-w-2xl mx-auto`}>
+        {subtitle}
+      </p>
+      <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a
+          href={cta1Href}
+          class="inline-flex items-center justify-center px-8 py-3.5 bg-primary text-white font-bold text-base rounded-button hover:bg-primary-hover transition-all shadow-md hover:shadow-lg w-full sm:w-auto"
+        >
+          {cta1Text}
+        </a>
+        {cta2Text && cta2Href && (
+          <a
+            href={cta2Href}
+            class="inline-flex items-center justify-center px-8 py-3.5 bg-white text-primary font-bold text-base rounded-button border-2 border-primary/20 hover:border-primary/40 transition-all w-full sm:w-auto"
+          >
+            {cta2Text}
+          </a>
+        )}
+      </div>
+      {!compact && (
+        <p class="mt-4 text-text-muted text-sm">Keine Kreditkarte nötig &middot; In 2 Minuten startklar</p>
+      )}
+    </div>
+  </div>
+</section>

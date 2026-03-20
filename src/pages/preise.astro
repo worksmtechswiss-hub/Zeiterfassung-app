@@ -1,0 +1,148 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import PricingTable from '../components/PricingTable.astro';
+import ComparisonTable from '../components/ComparisonTable.astro';
+import FAQ from '../components/FAQ.astro';
+import CTASection from '../components/CTASection.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import { plans } from '../data/pricing';
+import { preiseFaq } from '../data/faq';
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: 'Zeiterfassung App',
+    description: 'Zeiterfassungs-App für Freelancer und KMU in der Schweiz',
+    brand: {
+      '@type': 'Organization',
+      name: 'Zeiterfassung App',
+    },
+    offers: [
+      {
+        '@type': 'Offer',
+        name: 'Free',
+        price: '0',
+        priceCurrency: 'CHF',
+        description: 'Perfekt für Einzelpersonen und zum Testen',
+        priceValidUntil: '2027-12-31',
+        availability: 'https://schema.org/InStock',
+      },
+      {
+        '@type': 'Offer',
+        name: 'Pro',
+        price: '9',
+        priceCurrency: 'CHF',
+        description: 'Für Freelancer und Selbständige',
+        priceValidUntil: '2027-12-31',
+        availability: 'https://schema.org/InStock',
+        priceSpecification: {
+          '@type': 'UnitPriceSpecification',
+          price: '9',
+          priceCurrency: 'CHF',
+          billingDuration: 'P1M',
+          valueAddedTaxIncluded: true,
+        },
+      },
+      {
+        '@type': 'Offer',
+        name: 'Team',
+        price: '6',
+        priceCurrency: 'CHF',
+        description: 'Für KMU und Teams ab 2 Personen',
+        priceValidUntil: '2027-12-31',
+        availability: 'https://schema.org/InStock',
+        priceSpecification: {
+          '@type': 'UnitPriceSpecification',
+          price: '6',
+          priceCurrency: 'CHF',
+          billingDuration: 'P1M',
+          referenceQuantity: {
+            '@type': 'QuantitativeValue',
+            value: '1',
+            unitText: 'Benutzer',
+          },
+          valueAddedTaxIncluded: true,
+        },
+      },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: preiseFaq.map((item) => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.answer.replace(/<[^>]*>/g, ''),
+      },
+    })),
+  },
+];
+---
+
+<BaseLayout
+  title="Preise – Zeiterfassung App Schweiz | Transparent & fair"
+  description="Faire Preise für Schweizer Freelancer und KMU. Kostenloser Einstieg, keine versteckten Kosten. Alle Preise in CHF inkl. MwSt."
+  schema={schema}
+>
+  <!-- Hero -->
+  <Hero
+    compact={true}
+    title="Einfache, faire Preise für jeden Bedarf"
+    subtitle="Alle Preise in CHF inkl. MwSt. Keine versteckten Kosten."
+    cta2Text="Features ansehen"
+    cta2Href="/features/"
+  />
+
+  <!-- Pricing Table -->
+  <section class="py-16 lg:py-24">
+    <div class="max-w-container mx-auto px-4 sm:px-6 lg:px-8">
+      <PricingTable plans={plans} />
+    </div>
+  </section>
+
+  <!-- Feature Comparison -->
+  <section class="py-16 lg:py-24 bg-surface">
+    <div class="max-w-container mx-auto px-4 sm:px-6 lg:px-8">
+      <SectionHeading
+        title="Alle Features im Vergleich"
+        subtitle="Detaillierte Übersicht aller Funktionen nach Plan."
+      />
+      <div class="max-w-4xl mx-auto">
+        <ComparisonTable
+          headers={['Free', 'Pro', 'Team']}
+          rows={[
+            { feature: 'Benutzer', values: ['1', '1', 'Unbegrenzt'] },
+            { feature: 'Zeiterfassung (Timer & manuell)', values: [true, true, true] },
+            { feature: 'Mobile App (iOS & Android)', values: [true, true, true] },
+            { feature: 'Daten in der Schweiz', values: [true, true, true] },
+            { feature: 'Projekte', values: ['Bis zu 3', 'Unbegrenzt', 'Unbegrenzt'] },
+            { feature: 'Monatsübersicht', values: [true, true, true] },
+            { feature: 'Kundenrapporte', values: [false, true, true] },
+            { feature: 'Überstunden-Tracking', values: [false, true, true] },
+            { feature: 'Exporte (PDF, CSV, Excel)', values: [false, true, true] },
+            { feature: 'GPS-Zeiterfassung', values: [false, true, true] },
+            { feature: 'Absenzen & Ferienverwaltung', values: [false, false, true] },
+            { feature: 'Rollen & Genehmigungen', values: [false, false, true] },
+            { feature: 'Team-Dashboard', values: [false, false, true] },
+            { feature: 'ArG-konforme Rapporte', values: [false, false, true] },
+            { feature: 'API-Zugang', values: [false, false, true] },
+            { feature: 'Prioritäts-Support', values: [false, true, true] },
+          ]}
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <FAQ items={preiseFaq} title="Häufige Fragen zu unseren Preisen" />
+
+  <!-- CTA -->
+  <CTASection
+    title="Bereit? Kostenlos starten – in 2 Minuten"
+    subtitle="Keine Kreditkarte nötig. Dauerhaft kostenloser Plan verfügbar. Schweizer Qualität."
+  />
+</BaseLayout>

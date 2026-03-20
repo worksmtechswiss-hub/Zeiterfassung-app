@@ -1,0 +1,338 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import CTASection from '../components/CTASection.astro';
+import FAQ from '../components/FAQ.astro';
+import { homeFaq } from '../data/faq';
+
+const gesetzFaq = [
+  homeFaq[0], // Ist Zeiterfassung in der Schweiz Pflicht?
+  homeFaq[3], // Wo werden meine Daten gespeichert?
+  {
+    question: 'Was passiert, wenn ich als Arbeitgeber keine Zeiten erfasse?',
+    answer: 'Das kantonale Arbeitsinspektorat kann bei einer Kontrolle Bussen verhängen. Zudem riskieren Sie im Streitfall mit Mitarbeitenden eine schlechtere Beweislage. Eine korrekte Zeiterfassung schützt beide Seiten.',
+  },
+  {
+    question: 'Gilt die Zeiterfassungspflicht auch für Teilzeitangestellte?',
+    answer: 'Ja, die Pflicht gemäss Art. 46 ArG gilt unabhängig vom Beschäftigungsgrad. Auch Teilzeitkräfte, temporäre Mitarbeitende und Praktikanten fallen unter die Zeiterfassungspflicht.',
+  },
+  {
+    question: 'Darf ich die Zeiterfassung digital führen?',
+    answer: 'Ja, digitale Zeiterfassung ist ausdrücklich erlaubt und sogar empfohlen. Wichtig ist, dass die Daten vollständig, korrekt und während 5 Jahren abrufbar sind. Eine App wie Zeiterfassung App erfüllt alle diese Anforderungen.',
+  },
+];
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: 'Zeiterfassung Gesetz Schweiz 2026 – Pflichten, Ausnahmen & ArG erklärt',
+    description: 'Alle gesetzlichen Pflichten zur Arbeitszeiterfassung in der Schweiz: Art. 46 ArG, Aufbewahrungsfristen, vereinfachte Erfassung und Ausnahmen.',
+    author: {
+      '@type': 'Organization',
+      name: 'Zeiterfassung App',
+      url: 'https://zeiterfassung-app.ch',
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Zeiterfassung App',
+      url: 'https://zeiterfassung-app.ch',
+    },
+    datePublished: '2026-01-15',
+    dateModified: '2026-03-20',
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': 'https://zeiterfassung-app.ch/gesetz/',
+    },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: gesetzFaq.map((item) => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.answer,
+      },
+    })),
+  },
+];
+---
+
+<BaseLayout
+  title="Zeiterfassung Gesetz Schweiz 2026 – Pflichten, Ausnahmen & ArG erklärt"
+  description="Alle gesetzlichen Pflichten zur Arbeitszeiterfassung in der Schweiz: Art. 46 ArG, Aufbewahrungsfristen, vereinfachte Erfassung und Ausnahmen."
+  schema={schema}
+>
+  <!-- Hero -->
+  <Hero
+    compact={true}
+    title="Zeiterfassung in der Schweiz: Was sagt das Gesetz?"
+    subtitle="Arbeitgeber in der Schweiz sind gesetzlich verpflichtet, die Arbeitszeiten ihrer Mitarbeitenden zu erfassen. Doch was genau schreibt das Gesetz vor – und welche Ausnahmen gibt es?"
+  />
+
+  <!-- Long-form Article -->
+  <section class="py-16 lg:py-24">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <article class="space-y-12">
+
+        <!-- Gesetzliche Grundlage -->
+        <div>
+          <h2 class="font-outfit font-bold text-2xl lg:text-3xl text-text mb-6">Die gesetzliche Grundlage: Artikel 46 des Arbeitsgesetzes (ArG)</h2>
+          <p class="text-text-secondary leading-relaxed mb-4">
+            Die Pflicht zur Arbeitszeiterfassung in der Schweiz ist im <strong>Arbeitsgesetz (ArG)</strong> verankert. Konkret regelt <strong>Artikel 46 ArG</strong> zusammen mit <strong>Artikel 73 der Verordnung 1 zum ArG (ArGV 1)</strong>, dass Arbeitgeber die Arbeitszeiten ihrer Mitarbeitenden systematisch dokumentieren müssen.
+          </p>
+          <p class="text-text-secondary leading-relaxed mb-4">
+            Das Gesetz verlangt, dass für jeden Mitarbeitenden folgende Daten <strong>täglich und wöchentlich</strong> erfasst werden: Beginn und Ende der Arbeitszeit, die Dauer der Pausen sowie allfällige Überstunden. Diese Pflicht gilt für alle dem ArG unterstellten Betriebe – also für die grosse Mehrheit der Schweizer Unternehmen.
+          </p>
+          <p class="text-text-secondary leading-relaxed">
+            Der Zweck dieser Regelung ist klar: Die Arbeitszeiterfassung dient dem <strong>Gesundheitsschutz der Arbeitnehmenden</strong>. Sie stellt sicher, dass Höchstarbeitszeiten eingehalten, Ruhezeiten respektiert und Überstunden korrekt abgegolten werden. Für Arbeitgeber ist sie gleichzeitig ein Schutz im Streitfall – denn wer korrekte Aufzeichnungen führt, kann im Konflikt die tatsächlich geleisteten Stunden belegen.
+          </p>
+        </div>
+
+        <!-- Was muss erfasst werden? -->
+        <div>
+          <h2 class="font-outfit font-bold text-2xl lg:text-3xl text-text mb-6">Was muss erfasst werden?</h2>
+          <p class="text-text-secondary leading-relaxed mb-4">
+            Das Gesetz definiert klar, welche Elemente der Arbeitszeit erfasst werden müssen. Die folgenden Angaben sind für jeden Mitarbeitenden pro Arbeitstag zu dokumentieren:
+          </p>
+
+          <div class="bg-primary-light/30 border border-primary/10 rounded-card p-6 mb-6">
+            <h3 class="font-outfit font-bold text-lg text-text mb-3">Pflichtangaben gemäss ArG:</h3>
+            <ul class="space-y-2 text-text-secondary">
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 text-primary mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                <span><strong>Beginn und Ende</strong> der täglichen Arbeitszeit</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 text-primary mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                <span><strong>Pausen</strong> ab 30 Minuten Dauer (Lage und Dauer)</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 text-primary mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                <span><strong>Überstunden</strong> und deren Kompensation</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 text-primary mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                <span><strong>Ruhetage</strong> und deren Kompensation (falls verschoben)</span>
+              </li>
+            </ul>
+          </div>
+
+          <p class="text-text-secondary leading-relaxed mb-4">
+            Zusätzlich empfiehlt es sich, auch <strong>Nacht- und Sonntagsarbeit</strong> separat auszuweisen, da hierfür besondere Regelungen gelten (Zuschläge, Bewilligungspflicht). Viele Unternehmen erfassen ausserdem Absenzen wie Ferien, Krankheitstage und Feiertage in derselben Lösung – das erleichtert die Personaladministration erheblich.
+          </p>
+          <p class="text-text-secondary leading-relaxed">
+            Wichtig: Die <strong>Verantwortung für die korrekte Erfassung liegt beim Arbeitgeber</strong>, auch wenn die Mitarbeitenden die Zeiten selbst eintragen. Arbeitgeber müssen sicherstellen, dass das System korrekt genutzt wird und die Daten vollständig sind.
+          </p>
+        </div>
+
+        <!-- Aufbewahrungsfrist -->
+        <div>
+          <h2 class="font-outfit font-bold text-2xl lg:text-3xl text-text mb-6">Wie lange müssen Arbeitszeiten aufbewahrt werden?</h2>
+          <p class="text-text-secondary leading-relaxed mb-4">
+            Gemäss <strong>Art. 73 Abs. 2 ArGV 1</strong> müssen Arbeitszeitaufzeichnungen während mindestens <strong>5 Jahren</strong> aufbewahrt werden. Diese Frist beginnt am Ende des jeweiligen Kalender&shy;jahres. Ein Arbeitszeit&shy;nachweis vom März 2026 muss also bis mindestens Ende 2031 verfügbar sein.
+          </p>
+
+          <div class="bg-primary-light/30 border border-primary/10 rounded-card p-6 mb-6">
+            <h3 class="font-outfit font-bold text-lg text-text mb-3">Aufbewahrung – das Wichtigste auf einen Blick:</h3>
+            <ul class="space-y-2 text-text-secondary">
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 text-primary mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                <span>Mindestens <strong>5 Jahre</strong> Aufbewahrungspflicht</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 text-primary mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                <span>Verantwortung liegt beim <strong>Arbeitgeber</strong></span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 text-primary mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                <span><strong>Digitale Speicherung</strong> ist zulässig und empfohlen</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 text-primary mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                <span>Daten müssen bei Kontrolle <strong>jederzeit abrufbar</strong> sein</span>
+              </li>
+            </ul>
+          </div>
+
+          <p class="text-text-secondary leading-relaxed mb-4">
+            Die Aufbewahrung darf sowohl physisch (Papier) als auch digital erfolgen. In der Praxis ist die <strong>digitale Archivierung</strong> klar im Vorteil: Sie ist platzsparend, durchsuchbar und bei Kontrollen sofort verfügbar. Entscheidend ist, dass die Daten während der gesamten Aufbewahrungsfrist unverändert und vollständig zugänglich bleiben.
+          </p>
+          <p class="text-text-secondary leading-relaxed">
+            Wer eine professionelle Zeiterfassungs-App nutzt, erfüllt diese Anforderung automatisch. Alle Einträge werden revisionssicher gespeichert und können jederzeit als Bericht exportiert werden – ideal für Kontrollen oder arbeitsrechtliche Auseinandersetzungen.
+          </p>
+        </div>
+
+        <!-- Vereinfachte Zeiterfassung -->
+        <div>
+          <h2 class="font-outfit font-bold text-2xl lg:text-3xl text-text mb-6">Vereinfachte Zeiterfassung: Wann ist sie erlaubt?</h2>
+          <p class="text-text-secondary leading-relaxed mb-4">
+            Seit 2016 kennt das Schweizer Recht eine <strong>vereinfachte Arbeitszeiterfassung</strong> für bestimmte Betriebe. Diese Erleichterung wurde eingeführt, um den administrativen Aufwand für kleinere Unternehmen zu reduzieren.
+          </p>
+          <p class="text-text-secondary leading-relaxed mb-4">
+            Die vereinfachte Erfassung ist an klare <strong>Voraussetzungen</strong> geknüpft:
+          </p>
+          <ul class="space-y-2 text-text-secondary mb-6">
+            <li class="flex items-start gap-2">
+              <span class="text-primary font-bold">1.</span>
+              <span>Der Betrieb beschäftigt <strong>weniger als 50 Mitarbeitende</strong>.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-primary font-bold">2.</span>
+              <span>Es besteht eine <strong>schriftliche Vereinbarung</strong> zwischen Arbeitgeber und Arbeitnehmenden (individuell oder kollektiv).</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-primary font-bold">3.</span>
+              <span>Die Mitarbeitenden können ihre Arbeitszeit <strong>zu einem wesentlichen Teil selbst festsetzen</strong>.</span>
+            </li>
+          </ul>
+          <p class="text-text-secondary leading-relaxed mb-4">
+            Bei der vereinfachten Erfassung müssen nur noch die <strong>Gesamtdauer der täglichen Arbeitszeit</strong> dokumentiert werden – nicht mehr Beginn, Ende und Pausen im Detail. Das reduziert den Aufwand deutlich, erfüllt aber weiterhin die Grundanforderungen des Gesetzes.
+          </p>
+          <p class="text-text-secondary leading-relaxed">
+            Für <a href="/kmu/" class="text-primary hover:underline font-medium">KMU in der Schweiz</a> ist diese Variante besonders attraktiv. Unsere App unterstützt beide Modelle – die vollständige und die vereinfachte Zeiterfassung – und lässt sich flexibel konfigurieren.
+          </p>
+        </div>
+
+        <!-- Ausnahmen -->
+        <div>
+          <h2 class="font-outfit font-bold text-2xl lg:text-3xl text-text mb-6">Ausnahmen: Wer muss keine Zeiten erfassen?</h2>
+          <p class="text-text-secondary leading-relaxed mb-4">
+            Das Gesetz sieht unter bestimmten Bedingungen einen <strong>vollständigen Verzicht</strong> auf die Arbeitszeiterfassung vor. Diese Ausnahme betrifft allerdings nur einen sehr kleinen Personenkreis:
+          </p>
+          <ul class="space-y-2 text-text-secondary mb-6">
+            <li class="flex items-start gap-2">
+              <svg class="w-5 h-5 text-primary mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+              <span><strong>Arbeitnehmende in höherer leitender Tätigkeit</strong>, die über eine bedeutende Entscheidungsbefugnis verfügen und ihre Arbeitszeit weitgehend selbst bestimmen können.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="w-5 h-5 text-primary mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+              <span>Es braucht eine <strong>individuelle schriftliche Verzichtserklärung</strong> zwischen Arbeitgeber und Arbeitnehmer.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="w-5 h-5 text-primary mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+              <span>Das Bruttojahreseinkommen liegt in der Regel <strong>über CHF 120'000</strong>.</span>
+            </li>
+          </ul>
+          <p class="text-text-secondary leading-relaxed">
+            In der Praxis sind von dieser Ausnahme vor allem Geschäftsführer, Direktionsmitglieder und andere Kaderpersonen betroffen. Für alle anderen Mitarbeitenden – einschliesslich Teamleiter und Projektmanager – bleibt die Zeiterfassungspflicht bestehen. Im Zweifelsfall empfiehlt es sich, die Zeiten trotzdem zu erfassen.
+          </p>
+        </div>
+
+        <!-- GAV-Ausnahme -->
+        <div>
+          <h2 class="font-outfit font-bold text-2xl lg:text-3xl text-text mb-6">GAV-Ausnahme: Was bedeutet das für Ihr Unternehmen?</h2>
+          <p class="text-text-secondary leading-relaxed mb-4">
+            Neben dem individuellen Verzicht gibt es eine weitere Möglichkeit, von der Zeiterfassungspflicht abzuweichen: über einen <strong>Gesamtarbeitsvertrag (GAV)</strong>. Branchenverbände und Gewerkschaften können in einem GAV vereinbaren, dass für bestimmte Kategorien von Arbeitnehmenden auf die Zeiterfassung verzichtet wird.
+          </p>
+          <p class="text-text-secondary leading-relaxed mb-4">
+            Damit ein solcher GAV-Verzicht gültig ist, müssen folgende Bedingungen erfüllt sein:
+          </p>
+          <ul class="space-y-2 text-text-secondary mb-6">
+            <li class="flex items-start gap-2">
+              <span class="text-primary font-bold">1.</span>
+              <span>Der GAV wurde zwischen <strong>repräsentativen Sozialpartnern</strong> ausgehandelt (Arbeitgeber- und Arbeitnehmerverbände).</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-primary font-bold">2.</span>
+              <span>Der GAV enthält <strong>Massnahmen zum Gesundheitsschutz</strong> (z. B. regelmässige Gesundheitsumfragen, Recht auf Nichterreichbarkeit).</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-primary font-bold">3.</span>
+              <span>Die betroffenen Mitarbeitenden verfügen über eine <strong>grosse Arbeitszeit-Autonomie</strong> und ein Bruttojahreseinkommen über CHF 120'000.</span>
+            </li>
+          </ul>
+          <p class="text-text-secondary leading-relaxed">
+            Wenn Ihr Unternehmen keinem entsprechenden GAV untersteht, gilt die reguläre Zeiterfassungspflicht uneingeschränkt. Die Mehrheit der Schweizer Unternehmen fällt in diese Kategorie – weshalb eine zuverlässige Zeiterfassungslösung für die meisten Betriebe unverzichtbar ist.
+          </p>
+        </div>
+
+        <!-- Arbeitsinspektorat -->
+        <div>
+          <h2 class="font-outfit font-bold text-2xl lg:text-3xl text-text mb-6">Kontrolle durch das Arbeitsinspektorat</h2>
+          <p class="text-text-secondary leading-relaxed mb-4">
+            Die Einhaltung der Arbeitszeitvorschriften wird durch die <strong>kantonalen Arbeitsinspektorate</strong> kontrolliert. Diese können jederzeit und <strong>ohne Vorankündigung</strong> Betriebe inspizieren. Bei einer Kontrolle verlangen die Inspektoren Einsicht in die Arbeitszeitaufzeichnungen – und zwar für alle Mitarbeitenden.
+          </p>
+
+          <div class="bg-primary-light/30 border border-primary/10 rounded-card p-6 mb-6">
+            <h3 class="font-outfit font-bold text-lg text-text mb-3">Mögliche Konsequenzen bei Verstössen:</h3>
+            <ul class="space-y-2 text-text-secondary">
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 text-red-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
+                <span><strong>Bussen</strong> bis CHF 10'000 für Verstösse gegen das ArG</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 text-red-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
+                <span><strong>Nachfrist</strong> zur Behebung der Mängel mit erneuter Kontrolle</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 text-red-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
+                <span>Schlechtere <strong>Beweislage</strong> in arbeitsrechtlichen Streitigkeiten</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 text-red-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
+                <span>Bei Wiederholung: <strong>höhere Bussen</strong> und mögliche Strafanzeige</span>
+              </li>
+            </ul>
+          </div>
+
+          <p class="text-text-secondary leading-relaxed">
+            Betriebe, die eine digitale Zeiterfassungs-App nutzen, sind bei Kontrollen klar im Vorteil: Alle Daten sind sofort verfügbar, lückenlos dokumentiert und können per Knopfdruck als Bericht exportiert werden. Das spart Zeit und vermeidet Stress bei einer unangekündigten Inspektion.
+          </p>
+        </div>
+
+        <!-- So erfüllen Sie die Pflicht mit einer App -->
+        <div>
+          <h2 class="font-outfit font-bold text-2xl lg:text-3xl text-text mb-6">So erfüllen Sie die Pflicht mit einer App</h2>
+          <p class="text-text-secondary leading-relaxed mb-4">
+            Eine moderne Zeiterfassungs-App ist der einfachste Weg, die gesetzlichen Anforderungen zu erfüllen – ohne zusätzlichen Verwaltungsaufwand. Mit der <strong>Zeiterfassung App</strong> decken Sie alle Pflichten gemäss ArG ab:
+          </p>
+          <ul class="space-y-3 text-text-secondary mb-6">
+            <li class="flex items-start gap-2">
+              <svg class="w-5 h-5 text-primary mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+              <span><strong>Vollständige Erfassung</strong> von Beginn, Ende, Pausen und Überstunden – per Timer oder manuelle Eingabe</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="w-5 h-5 text-primary mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+              <span><strong>Revisionssichere Speicherung</strong> mit lückenlosem Audit-Trail über 5 Jahre</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="w-5 h-5 text-primary mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+              <span><strong>Automatische Überstundenberechnung</strong> nach Schweizer Recht</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="w-5 h-5 text-primary mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+              <span><strong>Export als PDF, CSV oder Excel</strong> – für Kontrollen und Lohnbuchhaltung</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="w-5 h-5 text-primary mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+              <span><strong>Daten in der Schweiz</strong> gehostet – DSG-konform und sicher</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="w-5 h-5 text-primary mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+              <span><strong>Mobile App</strong> für iOS und Android – Zeiten erfassen von überall, auch offline</span>
+            </li>
+          </ul>
+          <p class="text-text-secondary leading-relaxed mb-4">
+            Ob <a href="/freelancer/" class="text-primary hover:underline font-medium">Freelancer</a>, <a href="/kmu/" class="text-primary hover:underline font-medium">KMU</a> oder grösseres Unternehmen: Mit unserer App erfüllen Sie die gesetzlichen Anforderungen in wenigen Minuten. Mitarbeitende erfassen ihre Zeiten selbst über die App, Vorgesetzte behalten die Übersicht – und bei einer Kontrolle sind alle Daten sofort griffbereit.
+          </p>
+          <p class="text-text-secondary leading-relaxed">
+            Entdecken Sie alle <a href="/features/" class="text-primary hover:underline font-medium">Funktionen im Detail</a> oder starten Sie direkt mit dem kostenlosen Plan.
+          </p>
+        </div>
+
+      </article>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <FAQ items={gesetzFaq} title="Häufige Fragen zur Zeiterfassungspflicht" />
+
+  <!-- CTA -->
+  <CTASection
+    title="Gesetzeskonform in 2 Minuten"
+    subtitle="Starten Sie jetzt mit der Zeiterfassung – kostenlos und ArG-konform. Keine Kreditkarte nötig."
+  />
+</BaseLayout>
